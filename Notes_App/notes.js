@@ -19,6 +19,14 @@ var getAll = () => {
   return fetchNotes();
 };
 
+var removeNote = (title) => {
+  var notes = fetchNotes();
+  var filteredNotes = notes.filter((note) => note.title !== title);
+  saveNotes(filteredNotes);
+
+  return notes.length !== filteredNotes.length;
+};
+
 
 var fetchNotes = () => {
   try {
@@ -39,5 +47,6 @@ var saveNotes = (notes) => {
 
 module.exports = {
   addNote,
-  getAll
+  getAll,
+  removeNote
 }
